@@ -1,53 +1,83 @@
 namespace si {
 
+//=============================================================================
+// 
+// Unit
+//
+//=============================================================================
+
+
 template <
-    typename V,
-    typename S,
-    int64_t L, int64_t M, int64_t T, int64_t I, int64_t K, int64_t N, int64_t J
+    typename Value,
+    typename Space,
+    int64_t M,
+    int64_t Kg,
+    int64_t S,
+    int64_t A,
+    int64_t K,
+    int64_t Mol,
+    int64_t Cd
 >
-inline Value<V, S, L, M, T, I, K, N, J> operator+ (
-    const Value<V, S, L, M, T, I, K, N, J> & lhs,
-    const Value<V, S, L, M, T, I, K, N, J> & rhs
+Unit<Value, Space, M, Kg, S, A, K, Mol, Cd>::Unit (Value value) :
+    m_value(value)
+{
+}
+
+
+//=============================================================================
+// 
+// Operators
+//
+//=============================================================================
+
+template <
+    typename xValue,
+    typename xSpace,
+    int64_t M_, int64_t Kg_, int64_t S_, int64_t A_, int64_t K_, int64_t Mol_, int64_t Cd_
+>
+inline Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> operator+ (
+    const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & lhs, 
+    const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & rhs
 ) {
-    return Value<V, S, L, M, T, I, K, N, J>(lhs.m_value + rhs.m_value);
+    return { lhs.m_value + rhs.m_value };
 }
 
 template <
-    typename V,
-    typename S,
-    int64_t L, int64_t M, int64_t T, int64_t I, int64_t K, int64_t N, int64_t J
+    typename xValue,
+    typename xSpace,
+    int64_t M_, int64_t Kg_, int64_t S_, int64_t A_, int64_t K_, int64_t Mol_, int64_t Cd_
 >
-inline Value<V, S, L, M, T, I, K, N, J> operator- (
-    const Value<V, S, L, M, T, I, K, N, J> & lhs,
-    const Value<V, S, L, M, T, I, K, N, J> & rhs
+inline Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> operator- (
+    const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & lhs, 
+    const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & rhs
 ) {
-    return Value<V, S, L, M, T, I, K, N, J>(lhs.m_value - rhs.m_value);
+    return { lhs.m_value - rhs.m_value };
 }
 
 template <
-    typename V,
-    typename S,
-    int64_t Ll, int64_t Ml, int64_t Tl, int64_t Il, int64_t Kl, int64_t Nl, int64_t Jl,
-    int64_t Lr, int64_t Mr, int64_t Tr, int64_t Ir, int64_t Kr, int64_t Nr, int64_t Jr
+    typename xValue,
+    typename xSpace,
+    int64_t lM, int64_t lKg, int64_t lS, int64_t lA, int64_t lK, int64_t lMol, int64_t lCd,
+    int64_t rM, int64_t rKg, int64_t rS, int64_t rA, int64_t rK, int64_t rMol, int64_t rCd
 >
-inline Value<V, S, Ll+Lr, Ml+Mr, Tl+Tr, Il+Ir, Kl+Kr, Nl+Nr, Jl+Jr> operator* (
-    const Value<V, S, Ll, Ml, Tl, Il, Kl, Nl, Jl> & lhs,
-    const Value<V, S, Lr, Mr, Tr, Ir, Kr, Nr, Jr> & rhs
+inline Unit<xValue, xSpace, lM+rM, lKg+rKg, lS+rS, lA+rA, lK+rK, lMol+rMol, lCd+rCd> operator* (
+    const Unit<xValue, xSpace, lM, lKg, lS, lA, lK, lMol, lCd> & lhs,
+    const Unit<xValue, xSpace, rM, rKg, rS, rA, rK, rMol, rCd> & rhs
 ) {
-    return Value<V, S, Ll+Lr, Ml+Mr, Tl+Tr, Il+Ir, Kl+Kr, Nl+Nr, Jl+Jr>(lhs.m_value * rhs.m_value);
+    return { lhs.m_value * rhs.m_value };
 }
 
 template <
-    typename V,
-    typename S,
-    int64_t Ll, int64_t Ml, int64_t Tl, int64_t Il, int64_t Kl, int64_t Nl, int64_t Jl,
-    int64_t Lr, int64_t Mr, int64_t Tr, int64_t Ir, int64_t Kr, int64_t Nr, int64_t Jr
+    typename xValue,
+    typename xSpace,
+    int64_t lM, int64_t lKg, int64_t lS, int64_t lA, int64_t lK, int64_t lMol, int64_t lCd,
+    int64_t rM, int64_t rKg, int64_t rS, int64_t rA, int64_t rK, int64_t rMol, int64_t rCd
 >
-inline Value<V, S, Ll+Lr, Ml+Mr, Tl+Tr, Il+Ir, Kl+Kr, Nl+Nr, Jl+Jr> operator/ (
-    const Value<V, S, Ll, Ml, Tl, Il, Kl, Nl, Jl> & lhs,
-    const Value<V, S, Lr, Mr, Tr, Ir, Kr, Nr, Jr> & rhs
+inline Unit<xValue, xSpace, lM-rM, lKg-rKg, lS-rS, lA-rA, lK-rK, lMol-rMol, lCd-rCd> operator/ (
+    const Unit<xValue, xSpace, lM, lKg, lS, lA, lK, lMol, lCd> & lhs,
+    const Unit<xValue, xSpace, rM, rKg, rS, rA, rK, rMol, rCd> & rhs
 ) {
-    return Value<V, S, Ll-Lr, Ml-Mr, Tl-Tr, Il-Ir, Kl-Kr, Nl-Nr, Jl-Jr>(lhs.m_value / rhs.m_value);
+    return { lhs.m_value / rhs.m_value };
 }
 
 } // namespace

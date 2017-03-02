@@ -1,18 +1,22 @@
+#include "si.h"
+
+#pragma once
+
 namespace si {
 
 template <
     typename SpaceTo,
     typename SpaceFrom,
     typename Value,
-    int64_t L,  // meter
-    int64_t M,  // kilogram
-    int64_t T,  // second
-    int64_t I,  // ampere
-    int64_t K,  // kelvin
-    int64_t N,  // mole
-    int64_t J   // candela
+    int64_t M,
+    int64_t Kg,
+    int64_t S,
+    int64_t A,
+    int64_t K,
+    int64_t Mol,
+    int64_t Cd
 >
-Value<Value, SpaceTo, L, M, T, I, K, N, J> ConvertTo (const Value<Value, SpaceFrom, L, M, T, I, K, N, J> & value);
+Value<Value, SpaceTo, M, Kg, S, A, K, Mol, Cd> ConvertTo (const Value<Value, SpaceFrom, M, Kg, S, A, K, Mol, Cd> & value);
 
 } // namespace si
 
