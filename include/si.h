@@ -31,21 +31,21 @@ public:
     template <
         typename xValue,
         typename xSpace,
-        int64_t M_, int64_t Kg_, int64_t S_, int64_t A_, int64_t K_, int64_t Mol_, int64_t Cd_
+        int64_t xM, int64_t xKg, int64_t xS, int64_t xA, int64_t xK, int64_t xMol, int64_t xCd
     >
-    friend Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> operator+ (
-        const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & lhs, 
-        const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & rhs
+    friend Unit<xValue, xSpace, xM, xKg, xS, xA, xK, xMol, xCd> operator+ (
+        const Unit<xValue, xSpace, xM, xKg, xS, xA, xK, xMol, xCd> & lhs, 
+        const Unit<xValue, xSpace, xM, xKg, xS, xA, xK, xMol, xCd> & rhs
     );
 
     template <
         typename xValue,
         typename xSpace,
-        int64_t M_, int64_t Kg_, int64_t S_, int64_t A_, int64_t K_, int64_t Mol_, int64_t Cd_
+        int64_t xM, int64_t xKg, int64_t xS, int64_t xA, int64_t xK, int64_t xMol, int64_t xCd
     >
-    friend Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> operator- (
-        const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & lhs, 
-        const Unit<xValue, xSpace, M_, Kg_, S_, A_, K_, Mol_, Cd_> & rhs
+    friend Unit<xValue, xSpace, xM, xKg, xS, xA, xK, xMol, xCd> operator- (
+        const Unit<xValue, xSpace, xM, xKg, xS, xA, xK, xMol, xCd> & lhs, 
+        const Unit<xValue, xSpace, xM, xKg, xS, xA, xK, xMol, xCd> & rhs
     );
 
     template <
