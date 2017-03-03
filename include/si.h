@@ -28,6 +28,8 @@ public:
     Unit (const Unit & si) = default;
     explicit Unit (Value value);
 
+    explicit operator Value () const;
+
     template <
         typename xValue,
         typename xSpace,
@@ -77,15 +79,19 @@ private:
 
 //=============================================================================
 // 
-// Tags
+// Space tags
 //
 //=============================================================================
 
-struct world_space_tag {};
-struct local_space_tag {};
+namespace space {
 
-struct radian_space_tag {};
-struct degree_space_tag {};
+struct World {};
+struct Local {};
+
+struct Radian {};
+struct Degree {};
+
+} // namespace space
 
 } // namespace si
 

@@ -16,7 +16,7 @@ template <
     int64_t Mol,
     int64_t Cd
 >
-Value<Value, SpaceTo, M, Kg, S, A, K, Mol, Cd> ConvertTo (const Value<Value, SpaceFrom, M, Kg, S, A, K, Mol, Cd> & value);
+Unit<Value, SpaceTo, M, Kg, S, A, K, Mol, Cd> ConvertTo (const Unit<Value, SpaceFrom, M, Kg, S, A, K, Mol, Cd> & value);
 
 } // namespace si
 

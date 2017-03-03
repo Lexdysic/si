@@ -23,6 +23,21 @@ Unit<Value, Space, M, Kg, S, A, K, Mol, Cd>::Unit (Value value) :
 {
 }
 
+template <
+    typename Value,
+    typename Space,
+    int64_t M,
+    int64_t Kg,
+    int64_t S,
+    int64_t A,
+    int64_t K,
+    int64_t Mol,
+    int64_t Cd
+>
+Unit<Value, Space, M, Kg, S, A, K, Mol, Cd>::operator Value () const {
+    return m_value;
+}
+
 
 //=============================================================================
 // 
